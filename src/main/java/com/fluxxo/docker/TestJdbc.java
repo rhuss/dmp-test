@@ -9,7 +9,7 @@ import java.sql.SQLException;
  */
 public class TestJdbc {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, InterruptedException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         // Setup the connection with the DB
         try {
             Connection connect = DriverManager

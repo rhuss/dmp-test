@@ -24,19 +24,14 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.19.1</version>
                 <configuration>
-                    <autoCreateCustomNetworks>true</autoCreateCustomNetworks>
                     <images>
                         <image>
                             <alias>mysql</alias>
                             <name>mysql:5.7</name>
 
                             <run>
-                                <ports>
-                                    <port>3306:3306</port>
-                                </ports>
                                 <wait>
-                                    <log>mysqld: ready for connections</log>
-                                    <time>30000</time>
+                                    <time>20000</time>
                                 </wait>
                                 <env>
                                     <!-- set the following:
@@ -70,7 +65,7 @@
                                     </exec>
                                 </cmd>
                                 <assembly>
-                                    <targetDir>/app</targetDir>
+                                    <basedir>/app</basedir>
                                     <descriptorRef>artifact-with-dependencies</descriptorRef>
                                 </assembly>
                             </build>
@@ -78,10 +73,6 @@
                                 <links>
                                     <link>mysql:mysql</link>
                                 </links>
-
-                                <wait>
-                                    <time>3600000</time>
-                                </wait>
                             </run>
                         </image>
 
